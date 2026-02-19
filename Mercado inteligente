@@ -1,0 +1,47 @@
+#Mercado inteligente
+nome = str(input('Qual o nome do cliente? ')).strip().capitalize()
+idade = int(input('Idade do cliente: '))
+valcom = float(input('Qual o valor da compra? '))
+
+if valcom > 500:
+    valcom1 = valcom - (valcom * 5/100)
+else:
+    valcom1 = valcom
+
+if idade >= 18:
+    formadepag = int(input('Qual será a forma de pagamento?\n1)Dinheiro\n2)Cartão\n3)Pix'))
+    if formadepag == 1:
+        formadepag = 'Dinheiro'
+    elif formadepag == 2:
+        formadepag = 'Cartão'
+    elif formadepag == 3:
+        formadepag = 'Pix'
+    else:
+        formadepag = 'Dinheiro'
+        print('Entrada incorreta. Será considerado como dinheiro!!!')
+elif idade < 18:
+    formadepag = int(input('Qual será a forma de pagamento?\n1)Dinheiro\n2)Pix'))
+    if formadepag == 1:
+        formadepag = 'Dinheiro'
+    elif formadepag == 2:
+        formadepag = 'Pix'
+    else:
+        formadepag = 'Dinheiro'
+        print('Entrada incorreta. Será considerado como dinheiro!!!')
+    
+
+print(formadepag)
+
+if formadepag == 'Dinheiro':
+    valcom2 = valcom1 - ( valcom1 * 10/100)
+    print('10% de desconto')
+elif formadepag == 'Pix':
+    valcom2 = valcom1 - ( valcom1 * 5/100)
+    print('5% de desconto')
+elif formadepag == 'Cartão':
+    valcom2 = valcom1
+    print('Sem desconto')
+
+desc = valcom - valcom2
+
+print('Nome do cliente: {}\nIdade: {}\nValor da compra: R${}\nForma de pagamento: {}\nTotal economizado: {}'.format(nome,idade, valcom, formadepag, desc))
